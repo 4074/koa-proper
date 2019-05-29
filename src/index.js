@@ -1,14 +1,33 @@
 import ReactPropTypesSecret from 'prop-types/lib/ReactPropTypesSecret'
 
-export default function middleware(handle) {
-    return async function proper(ctx, next) {
-        ctx.prop = (s, t, d, c, h) => {
-            return propMaker(s, t, d, ctx.request.url, (error) => {
+const defaults = {
+    auto: true,
+    throw: (ctx, error) => {
+        ctx.throw(400, error.message)
+    },
+    log: (ctx, error) => {
+        console && console.warn && console.warn(error.message)
+    }
+}
+
+export default function middleware(globalOptions) {
+    return async function (ctx, next) {
+        ctx.proper = (props, types, options = {}) => {
+            options = {
+                ...defaults,
+                ...globalOptions,
+                ...options
+            }
+
+            return proper(props, types, ctx.request.url, (error) => {
                 ctx.makePropError = error
-                if (handle && typeof handle === 'function') {
-                    handle.bind(ctx, error)
-                } else {
-                    defaultHandle(error)
+
+                if (options.log && typeof options.log === 'function') {
+                    options.log(ctx, error)
+                }
+
+                if (error && options.auto && options.throw && typeof options.throw === 'function') {
+                    options.throw(ctx, error)
                 }
             })
         }
@@ -16,16 +35,7 @@ export default function middleware(handle) {
     }
 }
 
-export function propMaker(source, types = {}, defaults = {}, component, handle) {
-    if (typeof defaults === 'string') {
-        handle = component
-        component = defaults
-        defaults = {}
-    }
-    const props = {
-        ...defaults,
-        ...source
-    }
+export function proper(props, types = {}, component, handle) {
     const result = {}
     const errors = []
     
@@ -48,8 +58,4 @@ export function propMaker(source, types = {}, defaults = {}, component, handle) 
     }
 
     return result
-}
-
-function defaultHandle(error) {
-    console && console.warn && console.warn(error.message)
 }

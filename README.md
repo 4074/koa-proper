@@ -1,1 +1,1 @@
-# koa-prop-types
+# koa-proper

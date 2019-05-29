@@ -1,42 +1,51 @@
 {
-  "name": "koa-prop-types",
-  "version": "0.1.1",
-  "description": "",
+  "name": "koa-proper",
+  "version": "0.1.2",
+  "description": "Koa middleware for verify params with prop-types",
   "main": "build/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "build": "babel src --out-dir build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/4074/koa-prop-types.git"
+    "url": "git+https://github.com/4074/koa-proper.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "koa",
+    "proper",
+    "middleware",
+    "prop-types"
+  ],
+  "author": "win.ten.in@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/4074/koa-prop-types/issues"
+    "url": "https://github.com/4074/koa-proper/issues"
   },
-  "homepage": "https://github.com/4074/koa-prop-types#readme",
+  "homepage": "https://github.com/4074/koa-proper#readme",
   "dependencies": {
     "prop-types": "^15.7.2"
   },
   "babel": {
     "presets": [
       [
-        "env",
+        "@babel/env",
         {
           "targets": {
             "node": "10.3.0"
           }
         }
-      ],
-      "stage-0"
+      ]
     ]
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-stage-0": "^6.24.1"
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-jest": "^24.8.0",
+    "jest": "^24.8.0",
+    "koa": "^2.7.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4"
   }
 }
