@@ -60,7 +60,7 @@ app.use(proper({
 app.use(async ctx => {
     const props = ctx.request.query
     const types = {
-        username: PropType.string.isRequired
+        username: PropTypes.string.isRequired
     }
 
     // set options to override global options
