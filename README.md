@@ -10,7 +10,7 @@ npm i --save koa-proper
 ## Usage
 ```javascript
 import Koa from 'koa'
-import proper from 'proper'
+import proper from 'koa-proper'
 
 const app = new Koa()
 app.use(proper())
