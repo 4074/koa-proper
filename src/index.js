@@ -1,3 +1,4 @@
+import __PropTypes from 'prop-types'
 import ReactPropTypesSecret from 'prop-types/lib/ReactPropTypesSecret'
 
 const defaults = {
@@ -12,6 +13,7 @@ const defaults = {
 
 export default function middleware(globalOptions) {
     return async function (ctx, next) {
+        ctx.PropTypes = __PropTypes
         ctx.proper = (props, types, options = {}) => {
             options = {
                 ...defaults,
@@ -59,3 +61,5 @@ export function proper(props, types = {}, component, handle) {
 
     return result
 }
+
+export const PropTypes = __PropTypes 

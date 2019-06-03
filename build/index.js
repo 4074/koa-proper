@@ -5,6 +5,9 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.default = middleware;
 exports.proper = proper;
+exports.PropTypes = void 0;
+
+var _propTypes = _interopRequireDefault(require("prop-types"));
 
 var _ReactPropTypesSecret = _interopRequireDefault(require("prop-types/lib/ReactPropTypesSecret"));
 
@@ -22,6 +25,8 @@ const defaults = {
 
 function middleware(globalOptions) {
   return async function (ctx, next) {
+    ctx.PropTypes = _propTypes.default;
+
     ctx.proper = (props, types, options = {}) => {
       options = { ...defaults,
         ...globalOptions,
@@ -71,3 +76,6 @@ function proper(props, types = {}, component, handle) {
 
   return result;
 }
+
+const PropTypes = _propTypes.default;
+exports.PropTypes = PropTypes;

@@ -1,6 +1,6 @@
 # koa-proper
 
-A body validation for koa, based on prop-types.
+A body validation for koa, based on [prop-types](https://github.com/facebook/prop-types).
 
 ## Installation
 ```
@@ -10,7 +10,6 @@ npm i --save koa-proper
 ## Usage
 ```javascript
 import Koa from 'koa'
-import PropTypes from 'prop-types'
 import proper from 'proper'
 
 const app = new Koa()
@@ -20,8 +19,9 @@ app.use(async ctx => {
     // input props: {string: any}
     const props = ctx.request.query
     // types for validation: {string: PropType}
+    // ctx.PropTypes is export from prop-types package
     const types = {
-        username: PropTypes.string.isRequired
+        username: ctx.PropTypes.string.isRequired
     }
 
     // the validator will store in ctx.proper
@@ -60,7 +60,7 @@ app.use(proper({
 app.use(async ctx => {
     const props = ctx.request.query
     const types = {
-        username: PropTypes.string.isRequired
+        username: ctx.PropTypes.string.isRequired
     }
 
     // set options to override global options

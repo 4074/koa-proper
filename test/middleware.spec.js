@@ -1,6 +1,5 @@
 import Koa from 'koa'
 import request from 'request-promise'
-import PropTypes from 'prop-types'
 import ProperMiddleware from '../src/index'
 
 const app = new Koa()
@@ -9,7 +8,7 @@ const port = 29492
 app.use(ProperMiddleware())
 app.use(ctx => {
     ctx.proper(ctx.request.query, {
-        username: PropTypes.string.isRequired
+        username: ctx.PropTypes.string.isRequired
     })
     ctx.body = 'Hello Koa'
 })

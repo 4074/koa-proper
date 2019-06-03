@@ -1,5 +1,4 @@
-import PropTypes from 'prop-types'
-import { proper } from '../src/index'
+import { proper, PropTypes } from '../src/index'
 
 test('Valid string value for string expected', () => {
     const result = proper({
