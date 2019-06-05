@@ -1,4 +1,4 @@
-import __PropTypes from 'prop-types'
+import __PropTypes from 'prop-types/prop-types'
 import ReactPropTypesSecret from 'prop-types/lib/ReactPropTypesSecret'
 
 const defaults = {

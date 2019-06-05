@@ -7,7 +7,7 @@ exports.default = middleware;
 exports.proper = proper;
 exports.PropTypes = void 0;
 
-var _propTypes = _interopRequireDefault(require("prop-types"));
+var _propTypes = _interopRequireDefault(require("prop-types/prop-types"));
 
 var _ReactPropTypesSecret = _interopRequireDefault(require("prop-types/lib/ReactPropTypesSecret"));
 
